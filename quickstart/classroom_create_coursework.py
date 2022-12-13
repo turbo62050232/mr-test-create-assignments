@@ -16,12 +16,13 @@ limitations under the License.
 """
 # [START classroom_create_coursework]
 from __future__ import print_function
-
+import os.path
 import google.auth
+from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-
+SCOPES = ['https://www.googleapis.com/auth/classroom.coursework.students']
 def classroom_create_coursework(course_id):
 
     """
@@ -31,7 +32,8 @@ def classroom_create_coursework(course_id):
     for guides on implementing OAuth2 for the application.
     """
 
-    creds, _ = google.auth.default()
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
     # pylint: disable=maybe-no-member
 
     try:
@@ -40,10 +42,6 @@ def classroom_create_coursework(course_id):
             'title': 'Ant colonies',
             'description': '''Read the article about ant colonies
                               and complete the quiz.''',
-            'materials': [
-                {'link': {'url': 'http://example.com/ant-colonies'}},
-                {'link': {'url': 'http://example.com/ant-quiz'}}
-            ],
             'workType': 'ASSIGNMENT',
             'state': 'PUBLISHED',
         }
