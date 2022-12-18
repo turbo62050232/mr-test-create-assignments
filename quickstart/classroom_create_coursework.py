@@ -18,6 +18,7 @@ limitations under the License.
 from __future__ import print_function
 import os.path
 import google.auth
+import datetime
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -31,6 +32,14 @@ def classroom_create_coursework(course_id):
     TODO(developer) - See https://developers.google.com/identity
     for guides on implementing OAuth2 for the application.
     """
+    
+    thst = datetime.timezone(datetime.timedelta(hours=7))
+
+    # Set the due date to December 19, 2021 at 8:00 PM THST
+    due_date = datetime.datetime(2022, 12, 20, 23, 59, 0, tzinfo=thst)
+    #cvt = convert time to utc+0 timezone
+    cvt = datetime.timezone(datetime.timedelta(hours=0))
+    due_date = due_date.astimezone(cvt)
 
     if os.path.exists('token.json'):
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
@@ -39,21 +48,22 @@ def classroom_create_coursework(course_id):
     try:
         service = build('classroom', 'v1', credentials=creds)
         coursework = {
-             "title": "Individual Assignment test",
+             "title": "time 2",
             "description": "This is an individual assignment for you to complete.",
             "dueDate": {
-            "year": 2022,
-            "month": 12,
-            "day": 19
+            "year": due_date.year,
+            "month": due_date.month,
+            "day": due_date.day,
             },
             "dueTime": {
-            "hours": 20,
-            "minutes": 0
+            "hours": due_date.hour,
+            "minutes": due_date.minute
+
             },
             "assigneeMode":"INDIVIDUAL_STUDENTS",
             "individualStudentsOptions": {
                 "studentIds": [
-                    "111355848139463620207"
+                    "111355848139463620207","104862493983664211514"
                 ]
             },
             
