@@ -39,11 +39,26 @@ def classroom_create_coursework(course_id):
     try:
         service = build('classroom', 'v1', credentials=creds)
         coursework = {
-            'title': 'Ant colonies',
-            'description': '''Read the article about ant colonies
-                              and complete the quiz.''',
-            'workType': 'ASSIGNMENT',
-            'state': 'PUBLISHED',
+             "title": "Individual Assignment test",
+            "description": "This is an individual assignment for you to complete.",
+            "dueDate": {
+            "year": 2022,
+            "month": 12,
+            "day": 19
+            },
+            "dueTime": {
+            "hours": 20,
+            "minutes": 0
+            },
+            "assigneeMode":"INDIVIDUAL_STUDENTS",
+            "individualStudentsOptions": {
+                "studentIds": [
+                    "111355848139463620207"
+                ]
+            },
+            
+            "workType": "ASSIGNMENT",
+                    'state': 'PUBLISHED',
         }
         coursework = service.courses().courseWork().create(
             courseId=course_id, body=coursework).execute()
