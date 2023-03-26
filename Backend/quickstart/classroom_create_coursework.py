@@ -22,67 +22,65 @@ import datetime
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-
 SCOPES = ['https://www.googleapis.com/auth/classroom.coursework.students']
-def classroom_create_coursework(course_id):
 
-    """
-    Creates the coursework the user has access to.
-    Load pre-authorized user credentials from the environment.
-    TODO(developer) - See https://developers.google.com/identity
-    for guides on implementing OAuth2 for the application.
-    """
-    
-    thst = datetime.timezone(datetime.timedelta(hours=7))
+class CourseworkClass:
+    def classroom_create_coursework(course_id):
+        """
+        Creates the coursework the user has access to.
+        Load pre-authorized user credentials from the environment.
+        TODO(developer) - See https://developers.google.com/identity
+        for guides on implementing OAuth2 for the application.
+        """
+        
+        thst = datetime.timezone(datetime.timedelta(hours=7))
 
-    # Set the due date to mouth 3 day 28, 2023 at 8:00 PM THST
-    due_date = datetime.datetime(2023, 3, 28, 23, 59, 0, tzinfo=thst)
-    #cvt = convert time to utc+0 timezone
-    cvt = datetime.timezone(datetime.timedelta(hours=0))
-    due_date = due_date.astimezone(cvt)
+        # Set the due date to mouth 3 day 28, 2023 at 8:00 PM THST
+        due_date = datetime.datetime(2023, 3, 28, 23, 59, 0, tzinfo=thst)
+        #cvt = convert time to utc+0 timezone
+        cvt = datetime.timezone(datetime.timedelta(hours=0))
+        due_date = due_date.astimezone(cvt)
+        if os.path.exists('Backend/quickstart/token.json'):
+            creds = Credentials.from_authorized_user_file('Backend/quickstart/token.json', SCOPES)
+        # pylint: disable=maybe-no-member
+        try:
+            service = build('classroom', 'v1', credentials=creds)
+            coursework = {
+                "title": "time 3",
+                "description": "This is an individual assignment for you to complete.",
+                "dueDate": {
+                "year": due_date.year,
+                "month": due_date.month,
+                "day": due_date.day,
+                },
+                "dueTime": {
+                "hours": due_date.hour,
+                "minutes": due_date.minute
 
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-    # pylint: disable=maybe-no-member
+                },
+                "assigneeMode":"INDIVIDUAL_STUDENTS",
+                "individualStudentsOptions": {
+                    "studentIds": [
+                        # "111355848139463620207","104862493983664211514"
+                        "104862493983664211514"
+                    ]
+                },
+                
+                "workType": "ASSIGNMENT",
+                        'state': 'PUBLISHED',
+            }
+            coursework = service.courses().courseWork().create(
+                courseId=course_id, body=coursework).execute()
+            print(f"Assignment created with ID {coursework.get('id')}")
+            return coursework
 
-    try:
-        service = build('classroom', 'v1', credentials=creds)
-        coursework = {
-             "title": "time 2",
-            "description": "This is an individual assignment for you to complete.",
-            "dueDate": {
-            "year": due_date.year,
-            "month": due_date.month,
-            "day": due_date.day,
-            },
-            "dueTime": {
-            "hours": due_date.hour,
-            "minutes": due_date.minute
-
-            },
-            "assigneeMode":"INDIVIDUAL_STUDENTS",
-            "individualStudentsOptions": {
-                "studentIds": [
-                    # "111355848139463620207","104862493983664211514"
-                    "104862493983664211514"
-                ]
-            },
-            
-            "workType": "ASSIGNMENT",
-                    'state': 'PUBLISHED',
-        }
-        coursework = service.courses().courseWork().create(
-            courseId=course_id, body=coursework).execute()
-        print(f"Assignment created with ID {coursework.get('id')}")
-        return coursework
-
-    except HttpError as error:
-        print(f"An error occurred: {error}")
-        return error
+        except HttpError as error:
+            print(f"An error occurred: {error}")
+            return error
 
 
-if __name__ == '__main__':
-    # Put the course_id of course whose coursework needs to be created,
-    # the user has access to.
-    classroom_create_coursework(578789685769)
-# [END classroom_create_coursework]
+    if __name__ == '__main__':
+        # Put the course_id of course whose coursework needs to be created,
+        # the user has access to.
+        classroom_create_coursework(578789685769)
+    # [END classroom_create_coursework]
