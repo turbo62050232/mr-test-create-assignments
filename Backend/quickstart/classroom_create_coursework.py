@@ -35,8 +35,8 @@ def classroom_create_coursework(course_id):
     
     thst = datetime.timezone(datetime.timedelta(hours=7))
 
-    # Set the due date to December 19, 2021 at 8:00 PM THST
-    due_date = datetime.datetime(2022, 12, 20, 23, 59, 0, tzinfo=thst)
+    # Set the due date to mouth 3 day 28, 2023 at 8:00 PM THST
+    due_date = datetime.datetime(2023, 3, 28, 23, 59, 0, tzinfo=thst)
     #cvt = convert time to utc+0 timezone
     cvt = datetime.timezone(datetime.timedelta(hours=0))
     due_date = due_date.astimezone(cvt)
@@ -63,7 +63,8 @@ def classroom_create_coursework(course_id):
             "assigneeMode":"INDIVIDUAL_STUDENTS",
             "individualStudentsOptions": {
                 "studentIds": [
-                    "111355848139463620207","104862493983664211514"
+                    # "111355848139463620207","104862493983664211514"
+                    "104862493983664211514"
                 ]
             },
             
