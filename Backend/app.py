@@ -1,16 +1,16 @@
 from flask import Flask
-from controller.home import homeClass
+from controller.questBoard import questBoardClass
 from quickstart.classroom_create_coursework import CourseworkClass
 app = Flask(__name__)
 
 @app.route("/")
 def index():
     # return "<p>XD</p>"
-    res=homeClass.hello_world()
+    res=questBoardClass.hello_world()
     return res
 @app.route('/questboard')
 def questboard():
-    res=homeClass.getAllQuest()
+    res=questBoardClass.getAllQuest()
     return res
 @app.route('/createcoursework')
 def createcoursework():
