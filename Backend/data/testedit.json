@@ -1,0 +1,122 @@
+[
+    {
+        "QuestID": "001",
+        "QuestName": "Joining the journey",
+        "Description": "Join Google Classroom of mixed reality class with code wceeoa",
+        "Reward": "1430xp",
+        "Requirement": "Level 1",
+        "MinParty": 1,
+        "MaxParty": 1,
+        "Duration": "5 Days",
+        "QuestExpire": "N/A",
+        "visible": 1
+    },
+    {
+        "QuestID": "002",
+        "QuestName": "Explore the world",
+        "Description": "Find your selected mixed reality program and describe where in reality-virtuality continuum it should be",
+        "Reward": "5 exp",
+        "Requirement": "N/A",
+        "MinParty": 1,
+        "MaxParty": 1,
+        "Duration": "5 Days",
+        "QuestExpire": "27/08/2023",
+        "visible": 1
+    },
+    {
+        "QuestID": "003",
+        "QuestName": "Senses",
+        "Description": "Pick 2 or more senses of human body and describe how they work collaborately with each other and what human body expect to sense from them",
+        "Reward": "10 exp",
+        "Requirement": "N/A",
+        "MinParty": 1,
+        "MaxParty": 2,
+        "Duration": "5 Days",
+        "QuestExpire": "03/09/2023",
+        "visible": 1
+    },
+    {
+        "QuestID": "004",
+        "QuestName": "Dreaming",
+        "Description": "Dreaming experience and virtual reality experience",
+        "Reward": "up to 20 exp",
+        "Requirement": "Level 2",
+        "MinParty": 1,
+        "MaxParty": 2,
+        "Duration": "7 Days",
+        "QuestExpire": "03/09/2023",
+        "visible": 1
+    },
+    {
+        "QuestID": "005",
+        "QuestName": "Lucid dream",
+        "Description": "Lucid dream and five senses of human",
+        "Reward": "10 exp",
+        "Requirement": "N/A",
+        "MinParty": 1,
+        "MaxParty": 1,
+        "Duration": "3 Days",
+        "QuestExpire": "10/09/2023",
+        "visible": 0
+    },
+    {
+        "QuestID": "006",
+        "QuestName": "VR movement (1)",
+        "Description": "User movement is one of the most challenging issues in VR. You have to find an example of approaches to solve this issue.",
+        "Reward": "10 exp",
+        "Requirement": "Level 2",
+        "MinParty": 1,
+        "MaxParty": 2,
+        "Duration": "3 Days",
+        "QuestExpire": "10/09/2023",
+        "visible": 0
+    },
+    {
+        "QuestID": "007",
+        "QuestName": "VR movement (2)",
+        "Description": "What are you thinking about the future of VR Movement issues?",
+        "Reward": "up to 30 exp",
+        "Requirement": "Must finish Quest 006",
+        "MinParty": 1,
+        "MaxParty": 2,
+        "Duration": "5 Days",
+        "QuestExpire": "10/09/2023",
+        "visible": 0
+    },
+    {
+        "QuestID": "008",
+        "QuestName": "World of AR",
+        "Description": "Explore the world around you and find if there is anything can be augmented",
+        "Reward": "up to 30 exp",
+        "Requirement": "Level 3",
+        "MinParty": 1,
+        "MaxParty": 2,
+        "Duration": "7 Days",
+        "QuestExpire": "17/09/2023",
+        "visible": 0
+    },
+    {
+        "QuestID": "009",
+        "QuestName": "QR and AR",
+        "Description": "Will QR and AR relate to each other?",
+        "Reward": "10 exp",
+        "Requirement": "N/A",
+        "MinParty": 1,
+        "MaxParty": 1,
+        "Duration": "5 Days",
+        "QuestExpire": "17/09/2023",
+        "visible": 0
+    },
+    {
+        "QuestID": "010",
+        "QuestName": "Form your party",
+        "Description": "Form your party for the rest of your journey",
+        "Reward": "10 exp for each member",
+        "Requirement": "N/A",
+        "MinParty": 3,
+        "MaxParty": 5,
+        "Duration": "Before on 17/9/23",
+        "QuestExpire": "N/A",
+        "visible": 0
+    }
+]
