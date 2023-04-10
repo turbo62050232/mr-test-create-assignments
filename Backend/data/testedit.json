@@ -3,7 +3,7 @@
         "QuestID": "001",
         "QuestName": "Joining the journey",
         "Description": "Join Google Classroom of mixed reality class with code wceeoa",
-        "Reward": "1430xp",
+        "Reward": "10xp",
         "Requirement": "Level 1",
         "MinParty": 1,
         "MaxParty": 1,
@@ -118,5 +118,17 @@
         "Duration": "Before on 17/9/23",
         "QuestExpire": "N/A",
         "visible": 0
+    },
+    {
+        "QuestID": "031",
+        "QuestName": "Joining the journey",
+        "Description": "Join Google Classroom of mixed reality class with code wceeoa",
+        "Reward": "1430xp",
+        "Requirement": "Level 1",
+        "MinParty": 1,
+        "MaxParty": 1,
+        "Duration": "5 Days",
+        "QuestExpire": "N/A",
+        "visible": 1
     }
 ]

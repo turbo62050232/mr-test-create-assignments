@@ -15,12 +15,20 @@ class editQuestJsonClass:
         
         # Modify the original JSON data with the modification data
         for data in original_data:
+            #if find this Quest in data
             if data.get('QuestID') == traget:
                 for key in modification_data:
                     data[key] = modification_data[key]
-
+                break
+            else: 
+            # if didn't find then create new one
+                original_data.append(modification_data) 
+                break
+        # dump this data to json file
         with open('Backend/data/testedit.json', 'w') as f:
             json.dump(original_data, f, indent=4)
+
+        # filtered data to show in return 
         with open('Backend/data/testedit.json') as json_file:
             redata = json.load(json_file)
         filtered_data = [d for d in redata if d['QuestID'] == traget] 
