@@ -11,35 +11,33 @@ class playloadManagerClass:
         # Load the contents of the JSON file
         with open(file_path) as json_file:
             originalPlayload = json.load(json_file)
-
+        foundQuest ="0"
+        #loop data in all json data
         for data in originalPlayload:
+            # if find questId == QuestID in json
             if data.get('QuestID') == questId:
-                print("found add")
-                data['studentIds']+=[studentId]
-                break
-            else:
-
-                print("not found new")
-                newjs={
-                        "QuestID": "new",
-                        "studentIds": [
-                        ]
-                    }
-                newjs['QuestID']=jsdata['QuestID']
-                newjs['studentIds']=[jsdata['studentId']]
-                originalPlayload.append(newjs)
-                break
-        print(originalPlayload)
-        # with open('Backend/data/payload.json', 'w') as f:
-        #     json.dump(playload_file, f, indent=4)
-        #     #     for key in modification_data:
-        #     #         data[key] = modification_data[key]
-        #     #     break
-        #     # else: 
-        #     # # if didn't find then create new one
-        #     #     playload_file.append(modification_data) 
-        #     #     break
-        # dump this data to json file
+                foundQuest="1"
+                foundId="0"
+                #loop studentIds in data
+                for id in data['studentIds']:
+                    #if repeated id 
+                    if studentId ==id:
+                        foundId="1"
+                        break
+                #if not repeated
+                if  foundId=="0":
+                    data['studentIds']+=[studentId]
+                break     
+        #if that quest didn't in payload then create new one
+        if foundQuest=="0":
+            newjs={
+                    "QuestID": "new",
+                    "studentIds": [
+                    ]
+                }
+            newjs['QuestID']=jsdata['QuestID']
+            newjs['studentIds']=[jsdata['studentId']]
+            originalPlayload.append(newjs)
         with open('Backend/data/payload.json', 'w') as json_file:
             json.dump(originalPlayload, json_file, indent=4)
         # Return the data as a JSON response
