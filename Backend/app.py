@@ -1,14 +1,29 @@
 from flask import Flask, request
+from flask_cors import CORS
 from controller.questBoard import questBoardClass
 from controller.editQuest import editQuestClass
 from controller.editQuestJson import editQuestJsonClass
+from controller.login import loginClass
+from controller.playloadManager import playloadManagerClass
 from quickstart.classroom_create_coursework import CourseworkClass
 app = Flask(__name__)
-
+CORS(app)
 @app.route("/")
 def index():
     # return "<p>XD</p>"
     res=questBoardClass.hello_world()
+    return res
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    print(data)
+    res=loginClass.login(data)
+    return res
+@app.route('/playloadAdd', methods=['POST'])
+def playloadAdd():
+    data = request.get_json()
+    print(data)
+    res=playloadManagerClass.addStudentToQuest(data)
     return res
 @app.route('/questboard')
 def questboard():
