@@ -7,7 +7,7 @@ from controller.questBoard import questBoardClass
 from controller.editQuest import editQuestClass
 from controller.editQuestJson import editQuestJsonClass
 from controller.login import loginClass
-from controller.playloadManager import playloadManagerClass
+from controller.payloadManager import payloadManagerClass
 from quickstart.classroom_create_coursework import CourseworkClass
 # ----------------------------------------------------------------------
 app = Flask(__name__)
@@ -24,11 +24,11 @@ def login():
     print(data)
     res=loginClass.login(data)
     return res
-@app.route('/playloadAdd', methods=['POST'])
-def playloadAdd():
+@app.route('/payloadAdd', methods=['POST'])
+def payloadAdd():
     data = request.get_json()
     print(data)
-    res=playloadManagerClass.addStudentToQuest(data)
+    res=payloadManagerClass.addStudentToQuest(data)
     return res
 @app.route('/questboard')
 def questboard():
@@ -69,5 +69,5 @@ if __name__ == '__main__':
     # create Scheduler to run every day at 23:59 
     # sched.add_job(id='job1',func=job, trigger= 'cron',hour=23,minute=59)
     sched.start()
-    
+
     app.run(host='192.168.1.41', port=80,use_reloader=False)

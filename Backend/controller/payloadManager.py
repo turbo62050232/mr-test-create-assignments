@@ -1,6 +1,6 @@
 import os
 import json
-class playloadManagerClass:
+class payloadManagerClass:
     def hello_world():
         return "<p>Hello,XD World! XD</p>"
     def addStudentToQuest(jsdata):
@@ -10,10 +10,10 @@ class playloadManagerClass:
         studentId = jsdata['studentId']
         # Load the contents of the JSON file
         with open(file_path) as json_file:
-            originalPlayload = json.load(json_file)
+            originalpayload = json.load(json_file)
         foundQuest ="0"
         #loop data in all json data
-        for data in originalPlayload:
+        for data in originalpayload:
             # if find questId == QuestID in json
             if data.get('QuestID') == questId:
                 foundQuest="1"
@@ -37,8 +37,10 @@ class playloadManagerClass:
                 }
             newjs['QuestID']=jsdata['QuestID']
             newjs['studentIds']=[jsdata['studentId']]
-            originalPlayload.append(newjs)
+            originalpayload.append(newjs)
         with open('Backend/data/payload.json', 'w') as json_file:
-            json.dump(originalPlayload, json_file, indent=4)
+            json.dump(originalpayload, json_file, indent=4)
         # Return the data as a JSON response
-        return json.dumps(originalPlayload)
+        return json.dumps(originalpayload)
+    def unloadpayload():
+        print()
