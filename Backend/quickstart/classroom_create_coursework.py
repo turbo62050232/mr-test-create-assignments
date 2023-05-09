@@ -36,7 +36,7 @@ class CourseworkClass:
         thst = datetime.timezone(datetime.timedelta(hours=7))
 
         # Set the due date to mouth 3 day 28, 2023 at 8:00 PM THST
-        due_date = datetime.datetime(2023, 3, 28, 23, 59, 0, tzinfo=thst)
+        due_date = datetime.datetime(2023, 5, 9, 23, 59, 0, tzinfo=thst)
         #cvt = convert time to utc+0 timezone
         cvt = datetime.timezone(datetime.timedelta(hours=0))
         due_date = due_date.astimezone(cvt)
