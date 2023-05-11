@@ -25,7 +25,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/classroom.coursework.students']
 
 class CourseworkClass:
-    def classroom_create_coursework(course_id):
+    def classroom_create_coursework(coursework ,course_id):
         """
         Creates the coursework the user has access to.
         Load pre-authorized user credentials from the environment.
@@ -36,7 +36,7 @@ class CourseworkClass:
         thst = datetime.timezone(datetime.timedelta(hours=7))
 
         # Set the due date to mouth 3 day 28, 2023 at 8:00 PM THST
-        due_date = datetime.datetime(2023, 5, 9, 23, 59, 0, tzinfo=thst)
+        due_date = datetime.datetime(2023, 5, 11, 23, 59, 0, tzinfo=thst)
         #cvt = convert time to utc+0 timezone
         cvt = datetime.timezone(datetime.timedelta(hours=0))
         due_date = due_date.astimezone(cvt)
@@ -45,30 +45,31 @@ class CourseworkClass:
         # pylint: disable=maybe-no-member
         try:
             service = build('classroom', 'v1', credentials=creds)
-            coursework = {
-                "title": "time 3",
-                "description": "This is an individual assignment for you to complete.",
-                "dueDate": {
-                "year": due_date.year,
-                "month": due_date.month,
-                "day": due_date.day,
-                },
-                "dueTime": {
-                "hours": due_date.hour,
-                "minutes": due_date.minute
+            coursework=coursework
+            # coursework = {
+            #     "title": "time 3",
+            #     "description": "This is an individual assignment for you to complete.",
+            #     "dueDate": {
+            #     "year": due_date.year,
+            #     "month": due_date.month,
+            #     "day": due_date.day,
+            #     },
+            #     "dueTime": {
+            #     "hours": due_date.hour,
+            #     "minutes": due_date.minute
 
-                },
-                "assigneeMode":"INDIVIDUAL_STUDENTS",
-                "individualStudentsOptions": {
-                    "studentIds": [
-                        # "111355848139463620207","104862493983664211514"
-                        "104862493983664211514"
-                    ]
-                },
+            #     },
+            #     "assigneeMode":"INDIVIDUAL_STUDENTS",
+            #     "individualStudentsOptions": {
+            #         "studentIds": [
+            #             # "111355848139463620207","104862493983664211514"
+            #             "104862493983664211514"
+            #         ]
+            #     },
                 
-                "workType": "ASSIGNMENT",
-                        'state': 'PUBLISHED',
-            }
+            #     "workType": "ASSIGNMENT",
+            #             'state': 'PUBLISHED',
+            # }
             coursework = service.courses().courseWork().create(
                 courseId=course_id, body=coursework).execute()
             print(f"Assignment created with ID {coursework.get('id')}")
