@@ -27,6 +27,9 @@ def login():
 @app.route('/payloadAdd', methods=['POST'])
 def payloadAdd():
     data = request.get_json()
+    global current_date
+    current_date = 1
+    # print("now current_date =",current_date)
     print(data)
     res=payloadManagerClass.addStudentToQuest(data)
     return res
@@ -59,15 +62,16 @@ def dayset():
 
 def job():
     global current_date
-    print("I'm working...")if current_date==1 else print("noo")
+    # print("yessss") if current_date==1 else print("noo")
+    payloadManagerClass.unloadpayload() if current_date==1 else print("noo")
     current_date = 0
 
 if __name__ == '__main__':
 
     # create Scheduler to run every 5 seconds
-    sched.add_job(id='job1',func=job, trigger= 'interval',seconds=5)
+    # sched.add_job(id='job1',func=job, trigger= 'interval',seconds=5)
     # create Scheduler to run every day at 23:59 
-    # sched.add_job(id='job1',func=job, trigger= 'cron',hour=23,minute=59)
+    sched.add_job(id='job1',func=job, trigger= 'cron',hour=23,minute=21)
     sched.start()
 
     app.run(host='192.168.1.41', port=80,use_reloader=False)

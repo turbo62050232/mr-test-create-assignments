@@ -1,10 +1,17 @@
 import os
 import json
+import datetime
+# import sys module
+import sys
+# tell interpreter where to look
+sys.path.insert(0,"..")
+from quickstart.classroom_create_coursework import CourseworkClass
 class payloadManagerClass:
     def hello_world():
         return "<p>Hello,XD World! XD</p>"
     def addStudentToQuest(jsdata):
-        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'payload.json')
+        # print("addingggg")
+        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'payloadtest.json')
     
         questId = jsdata['QuestID']
         studentId = jsdata['studentId']
@@ -38,9 +45,53 @@ class payloadManagerClass:
             newjs['QuestID']=jsdata['QuestID']
             newjs['studentIds']=[jsdata['studentId']]
             originalpayload.append(newjs)
-        with open('Backend/data/payload.json', 'w') as json_file:
+        with open('Backend/data/payloadtest.json', 'w') as json_file:
             json.dump(originalpayload, json_file, indent=4)
         # Return the data as a JSON response
         return json.dumps(originalpayload)
     def unloadpayload():
-        print()
+        # print("doingggg")
+        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'payloadtest.json')
+        file_path_testData = os.path.join(os.path.dirname(__file__),'..', 'data', 'testData.json')   
+        # questId = jsdata['QuestID']
+        # studentId = jsdata['studentId']
+        # Load the contents of the JSON file
+        with open(file_path) as json_file:
+            payload = json.load(json_file)
+        with open(file_path_testData) as json_file:
+            testData = json.load(json_file)
+        print("test")
+
+        thst = datetime.timezone(datetime.timedelta(hours=7))
+        dateNow = datetime.datetime.now(tz=thst)
+        print("Current date and time:", dateNow)
+        for targetQuest in payload:
+            for detailsQuest in testData:
+                if targetQuest['QuestID']==detailsQuest['QuestID']:
+                    dateAfter = dateNow + datetime.timedelta(days=detailsQuest['Duration'])
+                    coursework = {
+                        "title": detailsQuest['QuestName'],
+                        "description": detailsQuest['Description'],
+                        "dueDate": {
+                        "year": dateAfter.year,
+                        "month": dateAfter.month,
+                        "day": dateAfter.day,
+                        },
+                        "dueTime": {
+                        "hours": dateAfter.hour,
+                        "minutes": dateAfter.minute
+
+                        },
+                        "maxPoints": detailsQuest['Reward'],
+                        "assigneeMode":"INDIVIDUAL_STUDENTS",
+                        "individualStudentsOptions": {
+                            "studentIds":targetQuest['studentIds']
+                        },
+                        "workType": "ASSIGNMENT",
+                                'state': 'PUBLISHED',
+                    }
+                    CourseworkClass.classroom_create_coursework(coursework,578789685769)
+                    break 
+            print()
+        return 
+

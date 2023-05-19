@@ -49,6 +49,7 @@ for targetQuest in payload:
                 "minutes": dateAfter.minute
 
                 },
+                "maxPoints": detailsQuest['Reward'],
                 "assigneeMode":"INDIVIDUAL_STUDENTS",
                 "individualStudentsOptions": {
                     "studentIds":targetQuest['studentIds']
@@ -95,3 +96,7 @@ print(coursework)
     'workType': 'ASSIGNMENT', 
     'state': 'PUBLISHED'
     }
+# 610422162098              "009"
+# 610453515530              "008"
+# 610459297953              "008" new
+# 610606036549              "009" grade
