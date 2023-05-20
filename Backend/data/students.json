@@ -1,20 +1,26 @@
 [
     {
-        "studentId":"62050200",
-        "userId":"111355848139463620207",
-        "studentName":"Venom",
-        "email":"62050200@kmitl.ac.th"
+        "studentId": "62050200",
+        "userId": "111355848139463620207",
+        "studentName": "Venom",
+        "email": "62050200@kmitl.ac.th"
     },
     {
-        "studentId":"62050232",
-        "userId":"106904108283114831151",
-        "studentName":"0232 SATHAPORN SAYPANTONG",
-        "email":"62050232@kmitl.ac.th"
+        "studentId": "62050232",
+        "userId": "106904108283114831151",
+        "studentName": "0232 SATHAPORN SAYPANTONG",
+        "email": "62050232@kmitl.ac.th"
     },
     {
-        "studentId":"62050232xd",
-        "userId":"104862493983664211514",
-        "studentName":"turbo teme",
-        "email":"turbo14301828@gmail.com"
+        "studentId": "62050232xd",
+        "userId": "104862493983664211514",
+        "studentName": "turbo teme",
+        "email": "turbo14301828@gmail.com",
+        "level": 1,
+        "exp": 10,
+        "questDone": [
+            "002",
+            "001"
+        ]
     }
 ]

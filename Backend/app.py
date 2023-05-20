@@ -8,6 +8,7 @@ from controller.editQuest import editQuestClass
 from controller.editQuestJson import editQuestJsonClass
 from controller.login import loginClass
 from controller.payloadManager import payloadManagerClass
+from controller.levelManager import levelManagerClass
 from quickstart.classroom_create_coursework import CourseworkClass
 # ----------------------------------------------------------------------
 app = Flask(__name__)
@@ -57,6 +58,12 @@ def dayset():
     global current_date
     current_date = 1
     res="this day...."
+    return res
+@app.route('/addExpToPlayer', methods=['POST'])
+def addExpToPlayer():
+    data = request.get_json()
+    print(data)
+    res=levelManagerClass.addExpToPlayer(data)
     return res
 
 
