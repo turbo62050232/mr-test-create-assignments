@@ -41,6 +41,7 @@ def classroom_add_attachment(course_id, coursework_id):
             print('No student submissions found.')
 
         print('Student Submissions:')
+        # print(submission)
         for submission in submissions:
             print(f"Submitted at:"
                   f"{(submission.get('id'), submission.get('creationTime'))}")
@@ -58,5 +59,8 @@ if __name__ == '__main__':
     #Cg4I1pqKqZgBEIra9Y7iEQ    "submitId"
     # classroom_add_attachment(578789685769, 610459297953)
     #Cg4I1pqKqZgBEKHR1pHiEQ    "submitId"
-    classroom_add_attachment(578789685769, 610606036549)
+    # classroom_add_attachment(578789685769, 610606036549)
     #Cg4I1pqKqZgBEMXs0tfiEQ    "submitId"
+    classroom_add_attachment(578789685769, 610818485767)
+    #Cg4I1pqKqZgBEMXs0tfiEQ    "submitId"
+    
