@@ -4,7 +4,9 @@ import datetime
 # import sys module
 import sys
 # tell interpreter where to look
-sys.path.insert(0,"..")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir)
 from quickstart.classroom_create_coursework import CourseworkClass
 class payloadManagerClass:
     def hello_world():
