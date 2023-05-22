@@ -19,8 +19,10 @@
         "level": 1,
         "exp": 10,
         "questDone": [
-            "002",
-            "001"
+            {   "QuestID": "008",
+                "expGained":10,
+                "state":"done"
+            }
         ]
     }
 ]
