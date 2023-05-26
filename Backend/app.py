@@ -81,4 +81,6 @@ if __name__ == '__main__':
     sched.add_job(id='job1',func=job, trigger= 'cron',hour=23,minute=21)
     sched.start()
 
-    app.run(host='192.168.1.41', port=80,use_reloader=False)
+    # app.run(host='192.168.1.41', port=80,use_reloader=False)
+    app.run(host='https://mr-test-create-assignments.onrender.com/', port=80,use_reloader=False)
+    

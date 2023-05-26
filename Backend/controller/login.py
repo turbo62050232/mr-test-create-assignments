@@ -14,7 +14,6 @@ class loginClass:
         # Make a request to the userinfo endpoint to get the user's email address
         response = requests.get('https://www.googleapis.com/oauth2/v2/userinfo',
                                 headers={'Authorization': f'Bearer {accessToken}'})
-
         # Check if the request was successful
         if response.status_code == 200:
             # Print the user's email address
@@ -29,9 +28,10 @@ class loginClass:
         # email_to_find = traget
         # email_to_find = "62050232@kmitl.ac.th"
         
-        email_to_find=email
+        # email_to_find=email
+        email_to_find=ACCESS_TOKEN['accessToken']
         for student in data:
-            if student["Email"] == email_to_find:
+            if student["email"] == email_to_find:
                 print("Found student:", student)
                 studentFound=student
                 break
