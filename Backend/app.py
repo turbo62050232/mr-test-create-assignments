@@ -83,7 +83,7 @@ if __name__ == '__main__':
     # create Scheduler to run every 5 seconds
     # sched.add_job(id='job1',func=job, trigger= 'interval',seconds=5)
     # create Scheduler to run every day at 23:59 
-    sched.add_job(id='job1',func=job, trigger= 'cron',hour=23,minute=34)
+    sched.add_job(id='job1',func=job, trigger= 'cron',hour=23,minute=40)
     sched.start()
 
     # app.run(host='192.168.1.41', port=80,use_reloader=False)
