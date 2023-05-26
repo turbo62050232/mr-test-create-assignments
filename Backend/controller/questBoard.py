@@ -2,6 +2,7 @@ import os
 import json
 class questBoardClass:
     def hello_world():
+        print(os.listdir())
         return "<p>Hello,XD World! XD</p>"
     def getAllQuest():
         file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'testData.json')
