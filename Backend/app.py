@@ -82,5 +82,5 @@ if __name__ == '__main__':
     sched.start()
 
     # app.run(host='192.168.1.41', port=80,use_reloader=False)
-    app.run(host='https://mr-test-create-assignments.onrender.com/', port=80,use_reloader=False)
+    app.run(use_reloader=False)
     
