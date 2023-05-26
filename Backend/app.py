@@ -32,7 +32,7 @@ def login():
 def payloadAdd():
     data = request.get_json()
     global current_date
-    current_date = 1
+    # current_date = 1
     # print("now current_date =",current_date)
     print(data)
     # res=payloadManagerClass.addStudentToQuest(data)
