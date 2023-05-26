@@ -9,11 +9,14 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 from quickstart.classroom_create_coursework import CourseworkClass
 class payloadManagerClass:
-    def hello_world():
+    def hello_world(jsdata):
+        open('data/payloadtestxdxd.json', 'w')
         return "<p>Hello,XD World! XD</p>"
     def addStudentToQuest(jsdata):
         # print("addingggg")
-        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'payloadtest.json')
+        # file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'payloadtest.json')
+
+        file_path = os.path.join('data/payloadtest.json')
     
         questId = jsdata['QuestID']
         studentId = jsdata['studentId']
@@ -47,9 +50,10 @@ class payloadManagerClass:
             newjs['QuestID']=jsdata['QuestID']
             newjs['studentIds']=[jsdata['studentId']]
             originalpayload.append(newjs)
-        with open('Backend/data/payloadtest.json', 'w') as json_file:
+        with open('data/payloadtest.json', 'w') as json_file:
             json.dump(originalpayload, json_file, indent=4)
         # Return the data as a JSON response
+        print(originalpayload) 
         return json.dumps(originalpayload)
     def unloadpayload():
         # print("doingggg")

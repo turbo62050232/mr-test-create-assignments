@@ -36,6 +36,8 @@ def payloadAdd():
     # print("now current_date =",current_date)
     print(data)
     res=payloadManagerClass.addStudentToQuest(data)
+    # res=payloadManagerClass.hello_world(data)
+    
     return res
 @app.route('/questboard')
 def questboard():
