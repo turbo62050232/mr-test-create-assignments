@@ -10,7 +10,7 @@ sys.path.insert(0, parent_dir)
 from quickstart.classroom_create_coursework import CourseworkClass
 class payloadManagerClass:
     def hello_world(jsdata):
-        file_path_testData = os.path.join('data/testdataxd.json')
+        file_path_testData = os.path.join('data/payloadtest.json')
         with open(file_path_testData) as json_file:
             testData = json.load(json_file)
         return json.dumps(testData)
