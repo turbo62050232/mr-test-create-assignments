@@ -40,8 +40,8 @@ class CourseworkClass:
         #cvt = convert time to utc+0 timezone
         cvt = datetime.timezone(datetime.timedelta(hours=0))
         due_date = due_date.astimezone(cvt)
-        if os.path.exists('Backend/quickstart/token.json'):
-            creds = Credentials.from_authorized_user_file('Backend/quickstart/token.json', SCOPES)
+        if os.path.exists('quickstart/token.json'):
+            creds = Credentials.from_authorized_user_file('quickstart/token.json', SCOPES)
         # pylint: disable=maybe-no-member
         try:
             service = build('classroom', 'v1', credentials=creds)

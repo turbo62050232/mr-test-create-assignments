@@ -57,8 +57,10 @@ class payloadManagerClass:
         return json.dumps(originalpayload)
     def unloadpayload():
         # print("doingggg")
-        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'payloadtest.json')
-        file_path_testData = os.path.join(os.path.dirname(__file__),'..', 'data', 'testData.json')   
+        # file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'payloadtest.json')
+        file_path = os.path.join('data/payloadtest.json')
+        # file_path_testData = os.path.join(os.path.dirname(__file__),'..', 'data', 'testData.json')  
+        file_path_testData = os.path.join('data/testData.json')
         # questId = jsdata['QuestID']
         # studentId = jsdata['studentId']
         # Load the contents of the JSON file
