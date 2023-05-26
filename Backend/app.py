@@ -19,6 +19,9 @@ def index():
     # return "<p>XD</p>"
     res=questBoardClass.hello_world()
     return res
+@app.route('/health')
+def health():
+  return '', 200
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -82,5 +85,4 @@ if __name__ == '__main__':
     sched.start()
 
     # app.run(host='192.168.1.41', port=80,use_reloader=False)
-    app.run(use_reloader=False)
-    
+    app.run(host='0.0.0.0', port=10000,use_reloader=False)
