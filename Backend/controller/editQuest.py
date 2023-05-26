@@ -2,7 +2,7 @@ import os
 import json
 class editQuestClass:
     def editQuest():
-        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'testData.json')
+        file_path = os.path.join('data/testData.json')
         
         # Open the JSON file
         with open(file_path) as json_file:

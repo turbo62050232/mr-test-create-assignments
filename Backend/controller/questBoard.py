@@ -5,7 +5,7 @@ class questBoardClass:
         print(os.listdir())
         return "<p>Hello,XD World! XD</p>"
     def getAllQuest():
-        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'testData.json')
+        file_path = os.path.join('data/testData.json')
         
         # Load the contents of the JSON file
         with open(file_path) as json_file:

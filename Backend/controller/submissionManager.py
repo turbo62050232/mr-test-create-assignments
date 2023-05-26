@@ -17,7 +17,7 @@ class submissionManagerClass:
     def checkSubmissionDone():
         # print("addingggg")
         # listSubmissionClass.getListSubmission()
-        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'submissionList.json')
+        file_path = os.path.join('data/submissionList.json')
     
         # courseworkId = jsdata['courseworkId']
         # submissionId=jsdata['submissionId']

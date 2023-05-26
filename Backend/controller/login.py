@@ -3,7 +3,7 @@ import json
 import requests
 class loginClass:
     def login(ACCESS_TOKEN):
-        file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'students.json')
+        file_path = os.path.join('data/students.json')
         accessToken= ACCESS_TOKEN['accessToken']
         # Open the JSON file
         with open(file_path) as json_file:

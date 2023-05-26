@@ -20,8 +20,8 @@ class listSubmissionClass:
         #         {'link': {'url': 'http://example.com/quiz-reading'}}
         #     ]
         # }
-        if os.path.exists('Backend/quickstart/token.json'):
-                creds = Credentials.from_authorized_user_file('Backend/quickstart/token.json')
+        if os.path.exists('quickstart/token.json'):
+                creds = Credentials.from_authorized_user_file('quickstart/token.json')
         submissions = []
         page_token = None
         try:
