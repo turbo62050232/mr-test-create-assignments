@@ -8,6 +8,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 from quickstart.classroom_create_coursework import CourseworkClass
+from controller.submissionManager import submissionManagerClass
 class payloadManagerClass:
     def hello_world(jsdata):
         file_path_testData = os.path.join('data/payloadtest.json')
@@ -100,7 +101,8 @@ class payloadManagerClass:
                         "workType": "ASSIGNMENT",
                                 'state': 'PUBLISHED',
                     }
-                    CourseworkClass.classroom_create_coursework(coursework,578789685769)
+                    courseworkId=CourseworkClass.classroom_create_coursework(coursework,578789685769)
+                    submissionManagerClass.addCourseworkToList(courseworkId,detailsQuest['QuestID'])
                     break 
             print()
         return 

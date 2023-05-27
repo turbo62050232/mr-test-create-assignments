@@ -10,10 +10,9 @@ class levelManagerClass:
     def hello_world():
         return "<p>Hello,XD World! XD</p>"
     def addExpToPlayer(jsdata):
-
-        file_path = os.path.join('data/students.json')
         userId = jsdata['userId']
         exp = jsdata['exp']
+        file_path = os.path.join('data/students.json')
         with open(file_path) as json_file:
             originalstudents = json.load(json_file)
         # foundStudentId ="0"
@@ -30,4 +29,20 @@ class levelManagerClass:
             with open('data/students.json', 'w') as json_file:
                 json.dump(originalstudents, json_file, indent=4)
         return  json.dumps(originalstudents)
-               
+    def addExpFromQuest(QuestID,userId,assignedGrade):
+        file_path = os.path.join('data/students.json')
+        with open(file_path) as json_file:
+            originalstudents = json.load(json_file)
+        for data in originalstudents:
+            # if find questId == QuestID in json
+            if data.get('userId') == userId:
+                for quest in data["questList"]:
+                    if quest.get('QuestID') == QuestID:
+                        quest['expGained']=assignedGrade
+                        quest['state']="done"
+        with open('data/students.json', 'w') as json_file:
+                json.dump(originalstudents, json_file, indent=4)
+
+        return
+if __name__ == '__main__':
+    levelManagerClass.addExpFromQuest("008","106904108283114831151",1430)     

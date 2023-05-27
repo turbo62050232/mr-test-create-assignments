@@ -73,7 +73,7 @@ class CourseworkClass:
             coursework = service.courses().courseWork().create(
                 courseId=course_id, body=coursework).execute()
             print(f"Assignment created with ID {coursework.get('id')}")
-            return coursework
+            return coursework.get('id')
 
         except HttpError as error:
             print(f"An error occurred: {error}")

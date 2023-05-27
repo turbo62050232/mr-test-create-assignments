@@ -3,14 +3,31 @@
         "courseworkId": "610606036549",
         "QuestID": "008",
         "submissionList": [
-            {   "userId":"104862493983664211514",
-                "submissionId":"Cg4I1pqKqZgBEMXs0tfiEQ",
-                "state":"TURNED_IN"
+            {
+                "userId": "104862493983664211514",
+                "submissionId": "Cg4I1pqKqZgBEMXs0tfiEQ",
+                "state": "TURNED_IN"
             },
-            {   
-                "userId":"104862493983664211514",
-                "submissionId":"Cg4I1pqKqZgBEMXs0tfiEy",
-                "state":"TURNED_IN"
+            {
+                "userId": "104862493983664211514",
+                "submissionId": "Cg4I1pqKqZgBEMXs0tfiEy",
+                "state": "TURNED_IN"
+            }
+        ]
+    },
+    {
+        "courseworkId": "611996113111",
+        "QuestID": "008",
+        "submissionList": [
+            {
+                "userId": "111355848139463620207",
+                "submissionId": "Cg4I_pDDqJgBENexvu7nEQ",
+                "state": "NEW"
+            },
+            {
+                "userId": "104862493983664211514",
+                "submissionId": "Cg4I1pqKqZgBENexvu7nEQ",
+                "state": "CREATED"
             }
         ]
     }

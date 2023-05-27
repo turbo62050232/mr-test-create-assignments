@@ -76,7 +76,7 @@
     "QuestName": "VR movement (2)",
     "Description": "What are you thinking about the future of VR Movement issues?",
     "Reward": 30,
-    "Requirement": "Must finish Quest 006",
+    "Requirement": 0,
     "MinParty": 1,
     "MaxParty": 2,
     "Duration": 5,
