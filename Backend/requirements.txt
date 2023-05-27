@@ -3,5 +3,7 @@ Flask_APScheduler==1.12.4
 Flask_Cors==3.0.10
 google_api_python_client==2.69.0
 google_auth_oauthlib==0.8.0
-protobuf==4.23.1
+protobuf==4.23.2
+PyJWT==2.7.0
+PyJWT==2.7.0
 Requests==2.31.0
