@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import jwt
 class loginClass:
     def login(ACCESS_TOKEN):
         file_path = os.path.join('data/students.json')
@@ -28,13 +29,66 @@ class loginClass:
         # email_to_find = traget
         # email_to_find = "62050232@kmitl.ac.th"
         
-        # email_to_find=email
-        email_to_find=ACCESS_TOKEN['accessToken']
+        email_to_find=email
+        # email_to_find=ACCESS_TOKEN['accessToken']
         for student in data:
             if student["email"] == email_to_find:
-                print("Found student:", student)
-                studentFound=student
+                # print("Found student:", student)
+                # studentFound=student
+                # create jwt token
+                encoded_jwt = jwt.encode({
+                                    'studentName': student["studentName"],
+                                    'role': student["role"],
+                                    'userId': student["userId"],
+                                    'studentId': student["studentId"]
+                                  }, 
+                                  'secret', algorithm='HS256')
+                # print(encoded_jwt)
+                # create json for return
+                statusjs={
+                    "status": "OK",
+                    "encoded_jwt": encoded_jwt
+                }
                 break
         else:
-            print("Student with email", email_to_find, "not found")
-        return json.dumps(studentFound)
+            statusjs={
+                    "status": "Register",
+                    "encoded_jwt": ""
+                }
+            # print("Student with email", email_to_find, "not found")
+        print(statusjs)
+        return json.dumps(statusjs)
+    def emailLogin(email_to_find):
+        file_path = os.path.join('data/students.json')
+        # Open the JSON file
+        with open(file_path) as json_file:
+            data = json.load(json_file)
+        for student in data:
+            if student["email"] == email_to_find:
+                # print("Found student:", student)
+                # studentFound=student
+                # create jwt token
+                encoded_jwt = jwt.encode({
+                                    'studentName': student["studentName"],
+                                    'role': student["role"],
+                                    'userId': student["userId"],
+                                    'studentId': student["studentId"]
+                                  }, 
+                                  'secret', algorithm='HS256')
+                # print(encoded_jwt)
+                # create json for return
+                statusjs={
+                    "status": "OK",
+                    "encoded_jwt": encoded_jwt
+                }
+                break
+        else:
+            statusjs={
+                    "status": "Register",
+                    "encoded_jwt": ""
+                }
+            # print("Student with email", email_to_find, "not found")
+        print(statusjs)
+        return json.dumps(statusjs)
+if __name__ == '__main__':
+    loginClass.emailLogin("turbo14301828@gmail.com")

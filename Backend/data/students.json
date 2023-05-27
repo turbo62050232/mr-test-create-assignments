@@ -4,6 +4,7 @@
         "userId": "111355848139463620207",
         "studentName": "Venom",
         "email": "62050200@kmitl.ac.th",
+        "role":"student",
         "level": 1,
         "exp": 10,
         "questList": [
@@ -19,6 +20,7 @@
         "userId": "106904108283114831151",
         "studentName": "0232 SATHAPORN SAYPANTONG",
         "email": "62050232@kmitl.ac.th",
+        "role":"teacher",
         "level": 1,
         "exp": 10,
         "questList": [
@@ -34,6 +36,7 @@
         "userId": "104862493983664211514",
         "studentName": "turbo teme",
         "email": "turbo14301828@gmail.com",
+        "role":"student",
         "level": 1,
         "exp": 10,
         "questList": [
