@@ -18,10 +18,6 @@ class submissionManagerClass:
         # print("addingggg")
         # listSubmissionClass.getListSubmission()
         file_path = os.path.join('data/submissionList.json')
-        # courseworkId = jsdata['courseworkId']
-        # submissionId=jsdata['submissionId']
-        # state = jsdata['state']
-        # Load the contents of the JSON file
         with open(file_path) as json_file:
             originalSubmissionList = json.load(json_file)
         foundQuest ="0"
@@ -70,7 +66,6 @@ class submissionManagerClass:
                     #loop states in data
 
                     for eachSubmissionID in data['submissionList']:
-                        #if repeated id 
                         
                         if submissionId == eachSubmissionID['submissionId']:
                             if state == "RETURNED" and eachSubmissionID['state']!="RETURNED":
@@ -81,10 +76,12 @@ class submissionManagerClass:
                                 print(f"Need to grade :"
                                         f"{(QuestID,userId,assignedGrade)}")
                                 levelManagerClass.addExpFromQuest(QuestID,userId,assignedGrade)
+                                eachSubmissionID['state']= "RETURNED"
                                 # submissionManagerClass.submissionGrade(QuestID,userId,assignedGrade)
                                 # levelManagerClass.addExpToPlayer(eachSubmissionID['userId'])
-                            break
-                        
+                            break  
+        with open('data/submissionList.json', 'w') as json_file:
+            json.dump(originalSubmissionList, json_file, indent=4)                
         return
         # #if that quest didn't in payload then create new one
         # if foundQuest=="0":

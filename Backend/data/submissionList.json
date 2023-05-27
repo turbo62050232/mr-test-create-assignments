@@ -6,7 +6,7 @@
             {
                 "userId": "104862493983664211514",
                 "submissionId": "Cg4I1pqKqZgBEMXs0tfiEQ",
-                "state": "TURNED_IN"
+                "state": "RETURNED"
             },
             {
                 "userId": "104862493983664211514",
@@ -22,12 +22,12 @@
             {
                 "userId": "111355848139463620207",
                 "submissionId": "Cg4I_pDDqJgBENexvu7nEQ",
-                "state": "NEW"
+                "state": "RETURNED"
             },
             {
                 "userId": "104862493983664211514",
                 "submissionId": "Cg4I1pqKqZgBENexvu7nEQ",
-                "state": "CREATED"
+                "state": "RETURNED"
             }
         ]
     }
