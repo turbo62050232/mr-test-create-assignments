@@ -9,6 +9,7 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 from quickstart.classroom_create_coursework import CourseworkClass
 from controller.submissionManager import submissionManagerClass
+from controller.logManager import logManagerClass
 class payloadManagerClass:
     def hello_world(jsdata):
         file_path_testData = os.path.join('data/payloadtest.json')
@@ -53,6 +54,8 @@ class payloadManagerClass:
             newjs['QuestID']=jsdata['QuestID']
             newjs['studentIds']=[jsdata['studentId']]
             originalpayload.append(newjs)
+        log=f"Started Quest {questId}"
+        logManagerClass.addToLog(studentId,log)
         with open('data/payloadtest.json', 'w') as json_file:
             json.dump(originalpayload, json_file, indent=4)
         # Return the data as a JSON response

@@ -11,6 +11,7 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 from quickstart.listSubmission import listSubmissionClass
 from controller.levelManager import levelManagerClass
+from controller.logManager import logManagerClass
 class submissionManagerClass:
     def hello_world():
         return "<p>Hello,XD World! XD</p>"
@@ -61,15 +62,11 @@ class submissionManagerClass:
                 submissionId= submission.get('id')
                 state = submission.get('state')
                 if data.get('courseworkId') == courseworkId:
-                    foundQuest="1"
-                    foundId="0"
-                    #loop states in data
-
+                    #loop eachSubmissionID in allsubmissionList
                     for eachSubmissionID in data['submissionList']:
                         
                         if submissionId == eachSubmissionID['submissionId']:
                             if state == "RETURNED" and eachSubmissionID['state']!="RETURNED":
-                                foundId="1"
                                 QuestID=data.get('QuestID') 
                                 userId=submission.get('userId')
                                 assignedGrade=submission.get('assignedGrade')
@@ -77,9 +74,12 @@ class submissionManagerClass:
                                         f"{(QuestID,userId,assignedGrade)}")
                                 levelManagerClass.addExpFromQuest(QuestID,userId,assignedGrade)
                                 eachSubmissionID['state']= "RETURNED"
+                                log=f"Received {assignedGrade} EXP from Quest {QuestID}"
+                                logManagerClass.addToLog(userId,log)
                                 # submissionManagerClass.submissionGrade(QuestID,userId,assignedGrade)
                                 # levelManagerClass.addExpToPlayer(eachSubmissionID['userId'])
                             break  
+        levelManagerClass.updateLevel()
         with open('data/submissionList.json', 'w') as json_file:
             json.dump(originalSubmissionList, json_file, indent=4)                
         return
