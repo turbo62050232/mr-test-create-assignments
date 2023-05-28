@@ -23,9 +23,9 @@ sched=APScheduler()
 @app.before_request
 def middleware():
     print("testttt")
-    # if request.path != '/login' :
-    #     # Redirect to secure login page if the request is not secure and not for the login route
-    #     return None
+    if request.path != '/login' or request.path != '/':
+        # Redirect to secure login page if the request is not secure and not for the login route
+        return None
     # Perform middleware logic here
     # For example, you can access the request object and perform checks
     print(request.headers)
