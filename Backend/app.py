@@ -31,7 +31,7 @@ def login():
     res=loginClass.login(data)
     return res
 @app.route('/register', methods=['POST'])
-def login():
+def register():
     data = request.get_json()
     print(data)
     res=loginClass.register(data)
