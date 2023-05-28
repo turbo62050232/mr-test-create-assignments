@@ -70,6 +70,11 @@ class logManagerClass:
         print(questdone)
 
         return "<p>Hello,XD World! XD</p>"
+    def getAllLog():
+        file_path = os.path.join('data/log.json')
+        with open(file_path) as json_file:
+            originalLog = json.load(json_file)
+        return json.dumps(originalLog)
 if __name__ == '__main__':
     # logManagerClass.addToLog("106904108283114831151","done 002")
     logManagerClass.test()

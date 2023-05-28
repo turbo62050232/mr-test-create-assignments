@@ -3,7 +3,7 @@
         "studentId": "62050200",
         "userId": "111355848139463620207",
         "studentName": "Venom",
-        "email": "62050200@kmitl.ac.th",
+        "email": "62050200@kmitl.ac.thxd",
         "role": "student",
         "level": 0,
         "exp": 10,
@@ -46,5 +46,15 @@
                 "state": "done"
             }
         ]
+    },
+    {
+        "studentId": "62050200",
+        "userId": "111355848139463620207",
+        "studentName": "xdxdxd",
+        "email": "62050200@kmitl.ac.th",
+        "role": "student",
+        "level": 0,
+        "exp": 0,
+        "questList": []
     }
 ]

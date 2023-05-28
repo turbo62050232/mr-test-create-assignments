@@ -19,14 +19,16 @@ class payloadManagerClass:
     def addStudentToQuest(jsdata):
         # print("addingggg")
         # file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'payloadtest.json')
-
-        file_path = os.path.join('data/payloadtest.json')
     
         questId = jsdata['QuestID']
         studentId = jsdata['studentId']
         # Load the contents of the JSON file
+        file_path = os.path.join('data/payloadtest.json')
         with open(file_path) as json_file:
             originalpayload = json.load(json_file)
+        file_path_student = os.path.join('data/students.json')
+        with open(file_path_student) as json_file:
+            studentsjson = json.load(json_file)
         foundQuest ="0"
         #loop data in all json data
         for data in originalpayload:

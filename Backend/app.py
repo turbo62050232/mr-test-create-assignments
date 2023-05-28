@@ -8,7 +8,9 @@ from controller.editQuest import editQuestClass
 from controller.editQuestJson import editQuestJsonClass
 from controller.login import loginClass
 from controller.payloadManager import payloadManagerClass
+from controller.leaderBoard import leaderBoardClass
 from controller.levelManager import levelManagerClass
+from controller.logManager import logManagerClass
 from quickstart.classroom_create_coursework import CourseworkClass
 # ----------------------------------------------------------------------
 app = Flask(__name__)
@@ -28,6 +30,12 @@ def login():
     print(data)
     res=loginClass.login(data)
     return res
+@app.route('/register', methods=['POST'])
+def login():
+    data = request.get_json()
+    print(data)
+    res=loginClass.register(data)
+    return res
 @app.route('/payloadAdd', methods=['POST'])
 def payloadAdd():
     data = request.get_json()
@@ -37,22 +45,23 @@ def payloadAdd():
     print(data)
     res=payloadManagerClass.addStudentToQuest(data)
     # res=payloadManagerClass.hello_world(data)
-    
     return res
-@app.route('/questboard', methods=['POST'])
+@app.route('/questboard', methods=['GET'])
 def questboard():
     data = request.get_json()
     res=questBoardClass.getAllQuest(data)
     return res
-@app.route('/createcoursework')
-def createcoursework():
-    res=CourseworkClass.classroom_create_coursework(578789685769)
+@app.route('/leaderboard', methods=['GET'])
+def leaderboard():
+    data = request.get_json()
+    res=leaderBoardClass.getLeaderBoard(data)
     return res
-@app.route('/editquest')
-def editquest():
-    res=editQuestClass.editQuest()
+@app.route('/log', methods=['GET'])
+def log():
+    data = request.get_json()
+    res=logManagerClass.getAllLog()
     return res
-@app.route('/editquestjson', methods=['POST'])
+@app.route('/editquest', methods=['POST'])
 def editquestjson():
     data = request.get_json()
     print(data)
@@ -73,6 +82,7 @@ def addExpToPlayer():
     return res
 
 
+
 def job():
     global current_date
     # print("yessss") if current_date==1 else print("noo")
@@ -85,7 +95,15 @@ if __name__ == '__main__':
     sched.add_job(id='job1',func=job, trigger= 'interval',seconds=10)
     # create Scheduler to run every day at 23:59 
     # sched.add_job(id='job1',func=job, trigger= 'cron',hour=23,minute=40)
-    sched.start()
+    # sched.start()
 
-    # app.run(host='192.168.1.41', port=80,use_reloader=False)
-    app.run(host='0.0.0.0', port=10000,use_reloader=False)
+    app.run(host='192.168.1.41', port=80,use_reloader=False)
+    # app.run(host='0.0.0.0', port=10000,use_reloader=False)
+# @app.route('/createcoursework')
+# def createcoursework():
+#     res=CourseworkClass.classroom_create_coursework(578789685769)
+#     return res
+# @app.route('/editquest')
+# def editquest():
+#     res=editQuestClass.editQuest()
+#     return res

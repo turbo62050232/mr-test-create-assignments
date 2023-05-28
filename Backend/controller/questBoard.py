@@ -5,8 +5,8 @@ class questBoardClass:
     def hello_world():
         print(os.listdir())
         return "<p>Hello,XD World! XD</p>"
-    def getAllQuest(userId):
-        # userId = jsdata['userId']
+    def getAllQuest(jsdata):
+        userId = jsdata['userId']
         # thst = datetime.timezone(datetime.timedelta(hours=7))
         # dateNow = datetime.datetime.now(tz=thst)
         file_path = os.path.join('data/testData.json')
@@ -29,6 +29,7 @@ class questBoardClass:
         # Return the data as a JSON response
         # print(filtered_data)
         return json.dumps(filtered_data)
+        # return "",403
     def checkQuestExpire(QuestExpire):
         thst = datetime.timezone(datetime.timedelta(hours=7))
         dateNow = datetime.datetime.now(tz=thst)
