@@ -15,9 +15,9 @@ class questBoardClass:
         with open(file_path) as json_file:
             data = json.load(json_file)
         with open(file_path_students) as json_file:
-            studens = json.load(json_file)
+            students = json.load(json_file)
         # get level of student
-        for s in studens :
+        for s in students :
             if s['userId'] == userId:
                 level=s['level']
                 break

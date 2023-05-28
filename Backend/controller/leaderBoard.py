@@ -10,11 +10,11 @@ class leaderBoardClass:
         # with open(file_path) as json_file:
         #     data = json.load(json_file)
         with open(file_path_students) as json_file:
-            studens = json.load(json_file)
+            students = json.load(json_file)
         leaderBoardjs='[]'
         leaderBoardjs = json.loads(leaderBoardjs)
         # getDataEachStudent
-        for s in studens :
+        for s in students :
             studentjs={
                     "AvatarName": "new",
                     "CurrentLevel": "new",

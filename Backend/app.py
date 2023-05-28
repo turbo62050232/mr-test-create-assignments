@@ -11,11 +11,38 @@ from controller.payloadManager import payloadManagerClass
 from controller.leaderBoard import leaderBoardClass
 from controller.levelManager import levelManagerClass
 from controller.logManager import logManagerClass
+from controller.jwtManager import jwtManagerClass
 from quickstart.classroom_create_coursework import CourseworkClass
 # ----------------------------------------------------------------------
+import os
+import json
 app = Flask(__name__)
 CORS(app)
 sched=APScheduler()
+# Middleware function
+@app.before_request
+def middleware():
+    print("testttt")
+    # if request.path != '/login' :
+    #     # Redirect to secure login page if the request is not secure and not for the login route
+    #     return None
+    # Perform middleware logic here
+    # For example, you can access the request object and perform checks
+    print(request.headers)
+    substring = ""
+    try:
+        # if request.headers.get('Authorization')!="Bearer ":
+        #     return "",401
+        auth_header = request.headers.get('Authorization')
+        substring = auth_header.split(" ")[1]
+    except Exception as error:
+        return "",401
+    res=jwtManagerClass.decodeJWT(substring,"role")
+    print(res["status"])
+    if res["status"]>200:
+        return  "",res["status"]
+    return res,200
+    
 @app.route("/")
 def index():
     # return "<p>XD</p>"
@@ -28,8 +55,21 @@ def health():
 def login():
     data = request.get_json()
     print(data)
-    res=loginClass.login(data)
-    return res
+    # res=loginClass.login(data)
+    auth_header = request.headers.get('Authorization')
+    substring = auth_header.split(" ")[1]
+    return substring
+@app.route('/role', methods=['POST'])
+def role():
+    data = request.get_json()
+    print(data)
+    # res=loginClass.login(data)
+    auth_header = request.headers.get('Authorization')
+    substring = auth_header.split(" ")[1]
+    role = jwtManagerClass.decodeJWT(substring,"role")
+    print("test")
+    print(role)
+    return role
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -66,7 +106,7 @@ def editquestjson():
     data = request.get_json()
     print(data)
     res=editQuestJsonClass.editQuestJson(data)
-    return res
+    return json.dumps(res)
 current_date=0
 @app.route('/dayset')
 def dayset():
