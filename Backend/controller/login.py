@@ -3,16 +3,16 @@ import json
 import requests
 import jwt
 class loginClass:
-    def login():
-        file_path = os.path.join('../data/students.json')
-        # accessToken= ACCESS_TOKEN['accessToken']
+    def login(jsdata):
+        file_path = os.path.join('data/students.json')
+        accessToken= jsdata['accessToken']
         
         # Open the JSON file
         with open(file_path) as json_file:
             data = json.load(json_file)
         # Replace ACCESS_TOKEN with the access token you have
-        ACCESS_TOKEN = 'ya29.a0AWY7CkkR1TUSb2UdY4vexoozDXQCOTr8UQ6G-I_qvtwWxVTaPQ_Xlj3j9-PD9-GlhTdk9FXHzApP9vr17Iu0_RXzGWZWq5X10Dhxhe-ia3SANBhl9Si0x4a07pmJujbkTVYo3hultv30dE2orl-SbadhO099C84aCgYKAYUSARISFQG1tDrpIT-b8XqwSk2dyxnCqQzu4g0166'
-        accessToken = ACCESS_TOKEN
+        # ACCESS_TOKEN = 'ya29.a0AWY7CkkR1TUSb2UdY4vexoozDXQCOTr8UQ6G-I_qvtwWxVTaPQ_Xlj3j9-PD9-GlhTdk9FXHzApP9vr17Iu0_RXzGWZWq5X10Dhxhe-ia3SANBhl9Si0x4a07pmJujbkTVYo3hultv30dE2orl-SbadhO099C84aCgYKAYUSARISFQG1tDrpIT-b8XqwSk2dyxnCqQzu4g0166'
+        # accessToken = ACCESS_TOKEN
         # Make a request to the userinfo endpoint to get the user's email address
         response = requests.get('https://www.googleapis.com/oauth2/v2/userinfo',
                                 headers={'Authorization': f'Bearer {accessToken}'})
@@ -73,7 +73,7 @@ class loginClass:
                         ]
                 }
             data.append(newStudentjs)
-            with open('../data/students.json', 'w') as json_file:
+            with open('data/students.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
             statusjs={
                     "status": "Register",
@@ -83,7 +83,7 @@ class loginClass:
         print(statusjs)
         return json.dumps(statusjs)
     def emailLogin(email_to_find):
-        file_path = os.path.join('../data/students.json')
+        file_path = os.path.join('data/students.json')
         # Open the JSON file
         with open(file_path) as json_file:
             data = json.load(json_file)
@@ -133,14 +133,14 @@ class loginClass:
     def register(jsdata):
         studentName=jsdata["AvatarName"]
         userId="111355848139463620207"
-        file_path_students = os.path.join('../data/students.json')
+        file_path_students = os.path.join('data/students.json')
         with open(file_path_students) as json_file:
             students = json.load(json_file)
         for student in students:
             if student["userId"]==userId and student["studentName"]=="N/A":
                 student["studentName"]=studentName
                 break
-        with open('../data/students.json', 'w') as json_file:
+        with open('data/students.json', 'w') as json_file:
                 json.dump(students, json_file, indent=4)
 
         return
