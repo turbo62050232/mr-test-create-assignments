@@ -23,7 +23,7 @@ sched=APScheduler()
 @app.before_request
 def middleware():
     print("testttt")
-    if request.path != '/login' or request.path != '/':
+    if request.path == '/login' or request.path == '/':
         # Redirect to secure login page if the request is not secure and not for the login route
         return None
     # Perform middleware logic here
@@ -55,10 +55,8 @@ def health():
 def login():
     data = request.get_json()
     print(data)
-    # res=loginClass.login(data)
-    auth_header = request.headers.get('Authorization')
-    substring = auth_header.split(" ")[1]
-    return substring
+    res=loginClass.login(data)
+    return res
 @app.route('/role', methods=['POST'])
 def role():
     data = request.get_json()
