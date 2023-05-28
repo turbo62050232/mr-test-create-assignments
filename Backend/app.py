@@ -97,8 +97,8 @@ if __name__ == '__main__':
     # sched.add_job(id='job1',func=job, trigger= 'cron',hour=23,minute=40)
     # sched.start()
 
-    app.run(host='192.168.1.41', port=80,use_reloader=False)
-    # app.run(host='0.0.0.0', port=10000,use_reloader=False)
+    # app.run(host='192.168.1.41', port=80,use_reloader=False)
+    app.run(host='0.0.0.0', port=10000,use_reloader=False)
 # @app.route('/createcoursework')
 # def createcoursework():
 #     res=CourseworkClass.classroom_create_coursework(578789685769)
