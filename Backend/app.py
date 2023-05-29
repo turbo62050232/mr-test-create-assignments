@@ -18,7 +18,8 @@ from quickstart.classroom_create_coursework import CourseworkClass
 import os
 import json
 app = Flask(__name__)
-CORS(app, origins='http://localhost, http://localhost:8080',supports_credentials=True)
+CORS(app)
+logging.getLogger('flask_cors').level = logging.DEBUG
 sched=APScheduler()
 # Middleware function
 @app.before_request
@@ -44,16 +45,16 @@ def middleware():
         return  "",res["status"]
     print("passss")
     return None
-@app.after_request
-def handle_options(response):
-    # if request.method == 'OPTIONS':
-    # response = make_response()
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-    return response
-    # return None
-logging.getLogger('flask_cors').level = logging.DEBUG
+# @app.after_request
+# def handle_options(response):
+#     # if request.method == 'OPTIONS':
+#     # response = make_response()
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+#     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+#     print(response)
+#     return response
+#     # return None
 @app.route("/")
 def index():
     # return "<p>XD</p>"
