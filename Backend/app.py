@@ -84,7 +84,7 @@ def login():
     return res
 
 
-@app.route("/role", methods=["GET"])
+@app.route("/role", methods=["POST"])
 def role():
     data = request.get_json()
     print("this is json data")
