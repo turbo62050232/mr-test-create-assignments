@@ -10,6 +10,7 @@ from controller.editQuest import editQuestClass
 from controller.editQuestJson import editQuestJsonClass
 from controller.login import loginClass
 from controller.payloadManager import payloadManagerClass
+from controller.submissionManager import submissionManagerClass
 from controller.leaderBoard import leaderBoardClass
 from controller.levelManager import levelManagerClass
 from controller.logManager import logManagerClass
@@ -177,6 +178,14 @@ def forceunloadpayload():
     # data = request.get_json()
     # print(data)
     res = payloadManagerClass.unloadpayload()
+    return res
+
+
+@app.route("/forceuncheckSubmission", methods=["GET"])
+def forceuncheckSubmission():
+    # data = request.get_json()
+    # print(data)
+    res = submissionManagerClass.checkSubmissionDone()
     return res
 
 
