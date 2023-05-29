@@ -173,7 +173,7 @@ def addExpToPlayer():
 
 
 @app.route("/forceunloadpayload", methods=["GET"])
-def addExpToPlayer():
+def forceunloadpayload():
     # data = request.get_json()
     # print(data)
     res = payloadManagerClass.unloadpayload()
