@@ -42,7 +42,7 @@ def middleware():
     if res["status"]>200:
         return  "",res["status"]
     print("passss")
-    return res,200
+    return None
     
 @app.route("/")
 def index():
@@ -68,7 +68,7 @@ def role():
     role = jwtManagerClass.decodeJWT(substring,"role")
     print("test")
     print(role)
-    return role
+    return role,200
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
