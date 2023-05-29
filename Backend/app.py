@@ -30,26 +30,26 @@ current_date = 0
 
 
 # Middleware function
-@app.before_request
-def middleware():
-    print("testttt")
-    if request.path == "/login" or request.path == "/":
-        # Redirect to secure login page if the request is not secure and not for the login route
-        return None
-    # Perform middleware logic here
-    # For example, you can access the request object and perform checks
-    auth_header = ""
-    try:
-        auth_header = request.headers.get("Authorization")
-        substring = auth_header.split(" ")[1]
-    except Exception as error:
-        return "", 401
-    res = jwtManagerClass.decodeJWT(auth_header, "role")
-    print(res["status"])
-    if res["status"] > 200:
-        return "", res["status"]
-    print("passss")
-    return None
+# @app.before_request
+# def middleware():
+#     print("testttt")
+#     if request.path == "/login" or request.path == "/":
+#         # Redirect to secure login page if the request is not secure and not for the login route
+#         return None
+#     # Perform middleware logic here
+#     # For example, you can access the request object and perform checks
+#     auth_header = ""
+#     try:
+#         auth_header = request.headers.get("Authorization")
+#         substring = auth_header.split(" ")[1]
+#     except Exception as error:
+#         return "", 401
+#     res = jwtManagerClass.decodeJWT(auth_header, "role")
+#     print(res["status"])
+#     if res["status"] > 200:
+#         return "", res["status"]
+#     print("passss")
+#     return None
 
 
 # @app.after_request
