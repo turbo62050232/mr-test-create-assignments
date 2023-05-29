@@ -27,6 +27,6 @@ class jwtManagerClass:
                 break
         if  jwtNotFound:
             return {"error":error,"status":403}
-        return {"role":decode_jwt[target],"status":200}
+        return {target:decode_jwt[target],"status":200}
 if __name__ == '__main__':
-    jwtManagerClass.decodeJWT("yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50TmFtZSI6InR1cmJvIHRlbWUiLCJyb2xlIjoic3R1ZGVudCIsInVzZXJJZCI6IjEwNDg2MjQ5Mzk4MzY2NDIxMTUxNCIsInN0dWRlbnRJZCI6IjYyMDUwMjMyeGQifQ.Ixwoc3rvgvB1O9D3hw_JzegzM7P9Dvjb4odqyz06Gxo","userId")
+    jwtManagerClass.decodeJWT("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50TmFtZSI6InR1cmJvIHRlbWUiLCJyb2xlIjoic3R1ZGVudCIsInVzZXJJZCI6IjEwNDg2MjQ5Mzk4MzY2NDIxMTUxNCIsInN0dWRlbnRJZCI6IjYyMDUwMjMyeGQifQ.Ixwoc3rvgvB1O9D3hw_JzegzM7P9Dvjb4odqyz06Gxo","userId")

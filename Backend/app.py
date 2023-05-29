@@ -41,6 +41,7 @@ def middleware():
     print(res["status"])
     if res["status"]>200:
         return  "",res["status"]
+    print("passss")
     return res,200
     
 @app.route("/")
@@ -57,7 +58,7 @@ def login():
     print(data)
     res=loginClass.login(data)
     return res
-@app.route('/role', methods=['POST'])
+@app.route('/role', methods=['GET'])
 def role():
     data = request.get_json()
     print(data)
@@ -86,7 +87,13 @@ def payloadAdd():
     return res
 @app.route('/questboard', methods=['GET'])
 def questboard():
-    data = request.get_json()
+    print("start")
+    # data = request.get_json()
+    auth_header = request.headers.get('Authorization')
+    substring = auth_header.split(" ")[1]
+    data = jwtManagerClass.decodeJWT(substring,"userId")
+    print("niceee")
+    print(data)
     res=questBoardClass.getAllQuest(data)
     return res
 @app.route('/leaderboard', methods=['GET'])
