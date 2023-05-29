@@ -2,11 +2,11 @@ import os
 import json
 import jwt
 class jwtManagerClass:
-    def decodeJWT(auth_header,target):
+    def decodeJWT(encoded_jwt,target):
         # saving the header claims into a variable
         # header_data = jwt.get_unverified_header(token)
         # using that variable in the decode method
-        encoded_jwt = auth_header.split(" ")[1]
+        # encoded_jwt = auth_header.split(" ")[1]
         file_path_students = os.path.join('data/students.json')
         with open(file_path_students) as json_file:
             students = json.load(json_file)

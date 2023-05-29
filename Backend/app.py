@@ -86,12 +86,13 @@ def login():
 
 @app.route("/role", methods=["GET"])
 def role():
-    # data = request.get_json()
+    data = request.get_json()
     # print(data)
     # res=loginClass.login(data)
-    auth_header = request.headers.get("Authorization")
-    substring = auth_header.split(" ")[1]
-    role = jwtManagerClass.decodeJWT(auth_header, "role")
+    # auth_header = request.headers.get("Authorization")
+    # substring = auth_header.split(" ")[1]
+    encoded_jwt = data["encoded_jwt"]
+    role = jwtManagerClass.decodeJWT(encoded_jwt, "role")
     print("test")
     print(role)
     return role, 200
