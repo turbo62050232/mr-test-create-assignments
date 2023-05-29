@@ -17,7 +17,7 @@ from quickstart.classroom_create_coursework import CourseworkClass
 import os
 import json
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 sched=APScheduler()
 # Middleware function
 @app.before_request
