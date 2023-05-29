@@ -120,7 +120,7 @@ def payloadAdd():
     return res
 
 
-@app.route("/questboard", methods=["GET"])
+@app.route("/questboard", methods=["POST"])
 def questboard():
     print("start")
     data = request.get_json()
