@@ -136,8 +136,8 @@ def questboard():
 
 @app.route("/leaderboard", methods=["GET"])
 def leaderboard():
-    data = request.get_json()
-    res = leaderBoardClass.getLeaderBoard(data)
+    # data = request.get_json()
+    res = leaderBoardClass.getLeaderBoard()
     return res
 
 
