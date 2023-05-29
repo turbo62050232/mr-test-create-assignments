@@ -43,15 +43,15 @@ def middleware():
         return  "",res["status"]
     print("passss")
     return None
-@app.before_request
-def handle_options():
-    if request.method == 'OPTIONS':
-        response = make_response()
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-        response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-        return response
-    return None
+# @app.before_request
+# def handle_options():
+#     if request.method == 'OPTIONS':
+#         response = make_response()
+#         response.headers.add('Access-Control-Allow-Origin', '*')
+#         response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+#         response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+#         return response
+#     return None
 @app.route("/")
 def index():
     # return "<p>XD</p>"
