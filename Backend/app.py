@@ -86,13 +86,13 @@ def login():
 
 @app.route("/role", methods=["GET"])
 def role():
-    data = request.get_json()
-    print("this is json data")
-    print(data)
+    # data = request.get_json()
+    # print("this is json data")
+    # print(data)
     # res=loginClass.login(data)
     # auth_header = request.headers.get("Authorization")
     # substring = auth_header.split(" ")[1]
-    encoded_jwt = data["encoded_jwt"]
+    # encoded_jwt = data["encoded_jwt"]
     # role = jwtManagerClass.decodeJWT(encoded_jwt, "role")
     role={"role":"student"}
     print("test")
@@ -123,10 +123,11 @@ def payloadAdd():
 @app.route("/questboard", methods=["GET"])
 def questboard():
     print("start")
-    # data = request.get_json()
-    auth_header = request.headers.get("Authorization")
-    substring = auth_header.split(" ")[1]
-    data = jwtManagerClass.decodeJWT(substring, "userId")
+    data = request.get_json()
+    # auth_header = request.headers.get("Authorization")
+    # substring = auth_header.split(" ")[1]
+    encoded_jwt = data["encoded_jwt"]
+    data = jwtManagerClass.decodeJWT(encoded_jwt, "userId")
     print("niceee")
     print(data)
     res = questBoardClass.getAllQuest(data)
