@@ -44,9 +44,9 @@ def middleware():
     print("passss")
     return None
 @app.after_request
-def handle_options():
+def handle_options(response):
     # if request.method == 'OPTIONS':
-    response = make_response()
+    # response = make_response()
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
