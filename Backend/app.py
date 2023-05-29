@@ -21,6 +21,8 @@ import os
 import json
 
 app = Flask(__name__)
+env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
+app.config.from_object(env_config)
 CORS(app)
 logging.getLogger("flask_cors").level = logging.DEBUG
 sched = APScheduler()
