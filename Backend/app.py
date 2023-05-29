@@ -87,7 +87,8 @@ def login():
 @app.route("/role", methods=["GET"])
 def role():
     data = request.get_json()
-    # print(data)
+    print("this is json data")
+    print(data)
     # res=loginClass.login(data)
     # auth_header = request.headers.get("Authorization")
     # substring = auth_header.split(" ")[1]
