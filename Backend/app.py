@@ -60,8 +60,8 @@ def login():
     return res
 @app.route('/role', methods=['GET'])
 def role():
-    data = request.get_json()
-    print(data)
+    # data = request.get_json()
+    # print(data)
     # res=loginClass.login(data)
     auth_header = request.headers.get('Authorization')
     substring = auth_header.split(" ")[1]
