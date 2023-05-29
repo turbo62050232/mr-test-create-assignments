@@ -143,7 +143,7 @@ def leaderboard():
 
 @app.route("/log", methods=["GET"])
 def log():
-    data = request.get_json()
+    # data = request.get_json()
     res = logManagerClass.getAllLog()
     return res
 
@@ -169,6 +169,14 @@ def addExpToPlayer():
     data = request.get_json()
     print(data)
     res = levelManagerClass.addExpToPlayer(data)
+    return res
+
+
+@app.route("/forceunloadpayload", methods=["GET"])
+def addExpToPlayer():
+    # data = request.get_json()
+    # print(data)
+    res = payloadManagerClass.unloadpayload()
     return res
 
 
