@@ -1,5 +1,5 @@
 #----------------------Library-------------------------------------------
-from flask import Flask, request
+from flask import Flask, request, make_response
 from flask_apscheduler import APScheduler
 from flask_cors import CORS
 #----------------------Class Fucntion-----------------------------------
@@ -17,7 +17,7 @@ from quickstart.classroom_create_coursework import CourseworkClass
 import os
 import json
 app = Flask(__name__)
-# CORS(app)
+CORS(app, origins='http://localhost, http://localhost:8080',supports_credentials=True)
 sched=APScheduler()
 # Middleware function
 @app.before_request
@@ -28,8 +28,8 @@ def middleware():
         return None
     # Perform middleware logic here
     # For example, you can access the request object and perform checks
-    print(request.headers)
-    substring = ""
+    # print(request.headers)
+    auth_header = ""
     try:
         # if request.headers.get('Authorization')!="Bearer ":
         #     return "",401
@@ -37,18 +37,21 @@ def middleware():
         substring = auth_header.split(" ")[1]
     except Exception as error:
         return "",401
-    res=jwtManagerClass.decodeJWT(substring,"role")
+    res=jwtManagerClass.decodeJWT(auth_header,"role")
     print(res["status"])
     if res["status"]>200:
         return  "",res["status"]
     print("passss")
     return None
-@app.after_request
-def add_cors_headers(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-    return response
+@app.before_request
+def handle_options():
+    if request.method == 'OPTIONS':
+        response = make_response()
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+        return response
+    return None
 @app.route("/")
 def index():
     # return "<p>XD</p>"
@@ -71,6 +74,15 @@ def login():
 #     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
 #     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
 #     return response
+# Handle OPTIONS requests for any route
+# @app.route('/', defaults={'path': ''}, methods=['OPTIONS'])
+# @app.route('/<path:path>', methods=['OPTIONS'])
+# def handle_options(path=None):
+#     response = make_response()
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+#     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+#     return response
 @app.route('/role', methods=['GET'])
 def role():
     # data = request.get_json()
@@ -78,7 +90,7 @@ def role():
     # res=loginClass.login(data)
     auth_header = request.headers.get('Authorization')
     substring = auth_header.split(" ")[1]
-    role = jwtManagerClass.decodeJWT(substring,"role")
+    role = jwtManagerClass.decodeJWT(auth_header,"role")
     print("test")
     print(role)
     return role,200
