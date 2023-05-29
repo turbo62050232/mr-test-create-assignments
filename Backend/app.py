@@ -93,7 +93,8 @@ def role():
     # auth_header = request.headers.get("Authorization")
     # substring = auth_header.split(" ")[1]
     encoded_jwt = data["encoded_jwt"]
-    role = jwtManagerClass.decodeJWT(encoded_jwt, "role")
+    # role = jwtManagerClass.decodeJWT(encoded_jwt, "role")
+    role={"role":"student"}
     print("test")
     print(role)
     return role, 200
