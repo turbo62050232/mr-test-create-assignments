@@ -43,7 +43,12 @@ def middleware():
         return  "",res["status"]
     print("passss")
     return None
-    
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+    return response
 @app.route("/")
 def index():
     # return "<p>XD</p>"
@@ -58,6 +63,14 @@ def login():
     print(data)
     res=loginClass.login(data)
     return res
+# Handle OPTIONS request explicitly
+# @app.route('/', methods=['OPTIONS'])
+# def handle_options():
+#     response = jsonify({'message': 'success'})
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+#     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+#     return response
 @app.route('/role', methods=['GET'])
 def role():
     # data = request.get_json()
