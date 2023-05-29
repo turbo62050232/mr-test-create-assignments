@@ -2,6 +2,7 @@
 from flask import Flask, request, make_response
 from flask_apscheduler import APScheduler
 from flask_cors import CORS
+import logging
 #----------------------Class Fucntion-----------------------------------
 from controller.questBoard import questBoardClass
 from controller.editQuest import editQuestClass
@@ -52,6 +53,7 @@ def handle_options(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
     return response
     # return None
+logging.getLogger('flask_cors').level = logging.DEBUG
 @app.route("/")
 def index():
     # return "<p>XD</p>"
@@ -69,7 +71,7 @@ def login():
 # Handle OPTIONS request explicitly
 # @app.route('/', methods=['OPTIONS'])
 # def handle_options():
-#     response = jsonify({'message': 'success'})
+#     response = make_response()
 #     response.headers.add('Access-Control-Allow-Origin', '*')
 #     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
 #     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
