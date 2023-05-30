@@ -1,43 +1,10 @@
 [
     {
-        "dateOfLog": "27/08/2023",
-        "logDetail": [
-            {
-                "studentName": "xd",
-                "log": "done quest 001"
-            },
-            {
-                "studentName": "xd",
-                "log": "done quest 002"
-            },
-            {
-                "studentName": "tee",
-                "log": "done quest 001"
-            },
-            {
-                "studentName": "tee",
-                "log": "done quest 001"
-            }
-        ]
-    },
-    {
         "dateOfLog": "28/05/2023",
         "logDetail": [
             {
-                "studentName": "xd",
-                "log": "done 001"
-            },
-            {
-                "studentName": "xd",
-                "log": "done 002"
-            },
-            {
-                "studentName": "xd",
-                "log": "done 002"
-            },
-            {
                 "studentName": "0232 SATHAPORN SAYPANTONG",
-                "log": "done 002"
+                "log": "Received 10 EXP from Quest 002"
             }
         ]
     },
