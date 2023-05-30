@@ -24,11 +24,11 @@ class editQuestJsonClass:
                 original_data.append(modification_data) 
                 break
         # dump this data to json file
-        with open('data/testedit.json', 'w') as f:
+        with open('data/testData.json', 'w') as f:
             json.dump(original_data, f, indent=4)
             
         # filtered data to show in return
-        with open('data/testedit.json') as json_file:
+        with open('data/testData.json') as json_file:
             redata = json.load(json_file)
         filtered_data = [d for d in redata if d['QuestID'] == traget] 
         return  json.dumps(filtered_data)
