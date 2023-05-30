@@ -94,7 +94,7 @@ class payloadManagerClass:
                         "day": dateAfter.day,
                         },
                         "dueTime": {
-                        "hours": 23,
+                        "hours": 16,
                         "minutes": 59
 
                         },
