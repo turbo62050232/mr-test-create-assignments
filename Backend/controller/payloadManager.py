@@ -56,8 +56,8 @@ class payloadManagerClass:
             newjs['QuestID']=jsdata['QuestID']
             newjs['studentIds']=[jsdata['studentId']]
             originalpayload.append(newjs)
-        log=f"Started Quest {questId}"
-        logManagerClass.addToLog(studentId,log)
+        # log=f"Started Quest {questId}"
+        # logManagerClass.addToLog(studentId,log)
         with open('data/payloadtest.json', 'w') as json_file:
             json.dump(originalpayload, json_file, indent=4)
         # Return the data as a JSON response
@@ -106,9 +106,16 @@ class payloadManagerClass:
                         "workType": "ASSIGNMENT",
                                 'state': 'PUBLISHED',
                     }
+                    print("testforcelog")
+                    print(targetQuest['studentIds'])
+                    for studentIds in targetQuest['studentIds']:
+                        studentIdsStr = str(studentIds)
+                        log=f"Started Quest {detailsQuest['QuestID']}"
+                        logManagerClass.addToLog(studentIdsStr,log)
+                        print(studentIdsStr)
                     courseworkId=CourseworkClass.classroom_create_coursework(coursework,578789685769)
                     submissionManagerClass.addCourseworkToList(courseworkId,detailsQuest['QuestID'])
                     break 
             print()
-        return 
+        return "",200
 
