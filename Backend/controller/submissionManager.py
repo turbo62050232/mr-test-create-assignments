@@ -82,7 +82,7 @@ class submissionManagerClass:
         levelManagerClass.updateLevel()
         with open('data/submissionList.json', 'w') as json_file:
             json.dump(originalSubmissionList, json_file, indent=4)                
-        return
+        return "",200
         # #if that quest didn't in payload then create new one
         # if foundQuest=="0":
         #     newjs={
