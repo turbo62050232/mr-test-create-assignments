@@ -94,8 +94,8 @@ class payloadManagerClass:
                         "day": dateAfter.day,
                         },
                         "dueTime": {
-                        "hours": dateAfter.hour,
-                        "minutes": dateAfter.minute
+                        "hours": 23,
+                        "minutes": 59
 
                         },
                         "maxPoints": detailsQuest['Reward'],
@@ -117,5 +117,8 @@ class payloadManagerClass:
                     submissionManagerClass.addCourseworkToList(courseworkId,detailsQuest['QuestID'])
                     break 
             print()
+        emptyPayload = []
+        with open('data/payloadtest.json', 'w') as json_file:
+            json.dump(emptyPayload, json_file, indent=4)
         return "",200
 
